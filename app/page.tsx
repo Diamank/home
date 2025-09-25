@@ -291,7 +291,7 @@ export default function Page() {
               const tel = String(f.get("telefone") || "");
               const cnpj = String(f.get("cnpj") || "");
               const email = String(f.get("email") || "");
-              const texto = `Olá, sou ${nome}. Meu CNPJ é ${cnpj}. Telefone: ${tel}. E-mail: ${email}. Quero simular antecipação.`;
+              const texto = `Olá, sou ${nome}. Meu CNPJ é ${cnpj}. Telefone: ${tel}. E-mail: ${email}. Gostaria de antecipar meu recebimentos.`;
               const url = `https://wa.me/${COMPANY.whatsapp.replace(
                 /\D/g,
                 ""
