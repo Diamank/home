@@ -17,7 +17,7 @@ const COMPANY = {
   name: "Diamank Finance ",
   cnpj: "61.390.573/0001-63",
   email: "diamank@diamank.com",
-  phone: "+55 14 99842-3236",
+  phone: "+55 14 99776-9095",
   whatsapp: "+55 14 99842-3236", // usado no botão principal
   address: "Ourinhos/SP",
 };
