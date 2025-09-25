@@ -14,12 +14,12 @@ import {
 
 // ⚙️ Configuração rápida — troque pelos seus dados
 const COMPANY = {
-  name: "Diamank Finance LTDA",
-  cnpj: "00.000.000/0001-00",
-  email: "contato@diamankfinance.com.br",
-  phone: "+55 11 99999-9999",
-  whatsapp: "+55 11 99999-9999", // usado no botão principal
-  address: "São Paulo/SP",
+  name: "Diamank Finance ",
+  cnpj: "61.390.573/0001-63",
+  email: "diamanl@diamank.com.br",
+  phone: "+55 14 99842-3236",
+  whatsapp: "+55 14 99842-3236", // usado no botão principal
+  address: "Ourinhos/SP",
 };
 
 const WHATS_LINK = `https://wa.me/${COMPANY.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(
@@ -381,10 +381,9 @@ export default function Page() {
             </ul>
           </div>
           <div className="text-sm text-slate-300">
-            <h4 className="font-semibold mb-3">Aviso</h4>
+            <h4 className="font-semibold mb-3">Horário de atendimento</h4>
             <p className="text-slate-400">
-              Esta página é um exemplo inspirado em layouts de mercado. Personalize
-              com seus conteúdos, marcas e políticas.
+              De segunda a sexta-feira, das 07:00 às 17:00.
             </p>
           </div>
         </Container>
