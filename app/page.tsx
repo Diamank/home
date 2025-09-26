@@ -362,11 +362,26 @@ function BoletoForm() {
     setMensagem(null);
     setLoading(true);
 
-    // 🔜 Integração com backend virá depois.
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/boletos/consulta", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cnpj, numero }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setMensagem(data?.error || "Não foi possível localizar o boleto.");
+      } else if (data?.link_boleto) {
+        window.open(data.link_boleto, "_blank");
+        setMensagem(`Nota ${data.numero}${data.pago ? " (paga)" : ""}`);
+      }
+    } catch {
+      setMensagem("Erro de conexão. Tente novamente.");
+    } finally {
       setLoading(false);
-      setMensagem(`(Prévia) Pronto para integrar: CNPJ=${cnpj} | Nota=${numero}`);
-    }, 600);
+    }
   }
 
   return (
