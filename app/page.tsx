@@ -95,7 +95,7 @@ export default function Page() {
               rel="noreferrer"
               className="hover:text-emerald-400 font-semibold"
             >
-              Área do Cliente
+              Área do Cedente
             </a>
           </nav>
           <a
