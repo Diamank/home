@@ -1,5 +1,5 @@
 "use client";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -82,6 +82,9 @@ export default function Page() {
             </a>
             <a href="#como-funciona" className="hover:text-white">
               Como funciona
+            </a>
+            <a href="#segunda-via" className="hover:text-white">
+              2ª via de boleto
             </a>
             <a href="#faq" className="hover:text-white">
               FAQ
@@ -253,6 +256,18 @@ export default function Page() {
         </Container>
       </section>
 
+      {/* 2ª via de boletos */}
+      <section id="segunda-via" className="py-16 md:py-24 bg-slate-950/40 border-y border-white/10">
+        <SectionTitle
+          eyebrow="Boletos"
+          title="2ª via de boleto"
+          subtitle="Informe o CNPJ do sacado e o número da nota para localizar o boleto."
+        />
+        <Container>
+          <BoletoForm />
+        </Container>
+      </section>
+
       {/* FAQ */}
       <section
         id="faq"
@@ -385,6 +400,11 @@ export default function Page() {
                 </a>
               </li>
               <li>
+                <a className="hover:underline" href="#segunda-via">
+                  2ª via de boleto
+                </a>
+              </li>
+              <li>
                 <a className="hover:underline" href="#faq">
                   FAQ
                 </a>
@@ -420,6 +440,69 @@ export default function Page() {
         </Container>
       </footer>
     </main>
+  );
+}
+
+/* ------- Componentes auxiliares ------- */
+
+function BoletoForm() {
+  const [cnpj, setCnpj] = useState("");
+  const [numero, setNumero] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [mensagem, setMensagem] = useState<string | null>(null);
+
+  function maskCNPJ(v: string) {
+    const s = v.replace(/\D/g, "").slice(0, 14);
+    return s
+      .replace(/^(\d{2})(\d)/, "$1.$2")
+      .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+      .replace(/^(\d{2})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3/$4")
+      .replace(/^(\d{2})\.(\d{3})\.(\d{3})\/(\d{4})(\d)/, "$1.$2.$3/$4-$5");
+  }
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setMensagem(null);
+    setLoading(true);
+
+    // 🔜 Integração com backend virá depois.
+    setTimeout(() => {
+      setLoading(false);
+      setMensagem(`(Prévia) Pronto para integrar: CNPJ=${cnpj} | Nota=${numero}`);
+    }, 600);
+  }
+
+  return (
+    <form onSubmit={onSubmit} className="mx-auto max-w-2xl grid md:grid-cols-2 gap-4">
+      <input
+        value={cnpj}
+        onChange={(e) => setCnpj(maskCNPJ(e.target.value))}
+        placeholder="CNPJ do sacado"
+        inputMode="numeric"
+        required
+        className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
+      />
+      <input
+        value={numero}
+        onChange={(e) => setNumero(e.target.value)}
+        placeholder="Número da nota"
+        required
+        className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
+      />
+      <button
+        type="submit"
+        disabled={loading}
+        className="md:col-span-2 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-60 text-black font-semibold px-6 py-3 rounded-xl transition"
+      >
+        {loading ? "Buscando..." : "Consultar boleto"}
+      </button>
+
+      {mensagem && (
+        <p className="md:col-span-2 text-sm text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 rounded-xl px-4 py-3">
+          {mensagem}
+        </p>
+      )}
+    </form>
   );
 }
 
