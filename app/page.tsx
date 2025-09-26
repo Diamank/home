@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import {
   Mail,
   Phone,
-  ShieldCheck,
   TrendingUp,
   Timer,
   FileText,
   ChevronRight,
   MessageCircle,
 } from "lucide-react";
+import Image from "next/image";
 
 // ⚙️ Configuração rápida — troque pelos seus dados
 const COMPANY = {
@@ -65,8 +65,14 @@ export default function Page() {
       <header className="sticky top-0 z-40 backdrop-blur bg-black/40 border-b border-white/10">
         <Container className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-lg bg-emerald-400/10 grid place-content-center">
-              <ShieldCheck className="h-5 w-5 text-emerald-400" />
+            <div className="h-9 w-9 rounded-lg overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt="Diamank Finance"
+                width={36}
+                height={36}
+                className="object-contain"
+              />
             </div>
             <span className="font-semibold">{COMPANY.name}</span>
           </div>
@@ -145,7 +151,7 @@ export default function Page() {
                 label="Taxas competitivas"
               />
               <Badge
-                icon={<ShieldCheck className="h-4 w-4" />}
+                icon={<FileText className="h-4 w-4" />}
                 label="Compliance e contratos"
               />
             </div>
@@ -189,7 +195,7 @@ export default function Page() {
               desc="Liquidez rápida com análise de sacados e gestão de títulos end-to-end."
             />
             <ServiceCard
-              icon={<ShieldCheck className="h-6 w-6" />}
+              icon={<Timer className="h-6 w-6" />}
               title="Gestão de Risco"
               desc="Políticas e contratos digitais, checagens e monitoramento de carteira."
             />
@@ -345,8 +351,14 @@ export default function Page() {
         <Container className="grid md:grid-cols-3 gap-6 items-start">
           <div>
             <div className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded-lg bg-emerald-400/10 grid place-content-center">
-                <ShieldCheck className="h-5 w-5 text-emerald-400" />
+              <div className="h-9 w-9 rounded-lg overflow-hidden">
+                <Image
+                  src="/logo.png"
+                  alt="Diamank Finance"
+                  width={36}
+                  height={36}
+                  className="object-contain"
+                />
               </div>
               <span className="font-semibold">{COMPANY.name}</span>
             </div>
