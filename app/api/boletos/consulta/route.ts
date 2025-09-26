@@ -1,10 +1,9 @@
-// app/api/boletos/consulta/route.ts
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,        // ok usar a pública
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!    // ANON só no server aqui
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!    // usar ANON no server aqui
 );
 
 export async function POST(req: Request) {
@@ -21,7 +20,7 @@ export async function POST(req: Request) {
     const cnpjDigits = String(cnpj).replace(/\D/g, "");
     const numeroStr = String(numero).trim();
 
-    // Consulta com join: notas ↔ sacados
+    // JOIN: notas ↔ sacados
     const { data, error } = await supabase
       .from("notas")
       .select("id, numero, link_boleto, pago, sacado_id, sacados: sacados!inner(id, cnpj)")
