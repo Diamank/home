@@ -159,7 +159,7 @@ export default function Page() {
           <div className="relative">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10">
               <img
-                src="/user.png"
+                src="/logo.png"
                 alt="Profissionais de finanças analisando recebíveis"
                 className="h-full w-full object-cover"
                 loading="lazy"
