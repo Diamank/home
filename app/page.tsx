@@ -67,7 +67,7 @@ export default function Page() {
           <div className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-lg overflow-hidden">
               <Image
-                src="/user.png"
+                src="/logo.png"
                 alt="Diamank Finance"
                 width={36}
                 height={36}
@@ -159,7 +159,7 @@ export default function Page() {
           <div className="relative">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10">
               <img
-                src="/logo.png"
+                src="/user.png"
                 alt="Profissionais de finanças analisando recebíveis"
                 className="h-full w-full object-cover"
                 loading="lazy"
