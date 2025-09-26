@@ -77,21 +77,11 @@ export default function Page() {
             <span className="font-semibold">{COMPANY.name}</span>
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm text-slate-300">
-            <a href="#servicos" className="hover:text-white">
-              Serviços
-            </a>
-            <a href="#como-funciona" className="hover:text-white">
-              Como funciona
-            </a>
-            <a href="#segunda-via" className="hover:text-white">
-              2ª via de boleto
-            </a>
-            <a href="#faq" className="hover:text-white">
-              FAQ
-            </a>
-            <a href="#contato" className="hover:text-white">
-              Contato
-            </a>
+            <a href="#servicos" className="hover:text-white">Serviços</a>
+            <a href="#como-funciona" className="hover:text-white">Como funciona</a>
+            <a href="#faq" className="hover:text-white">FAQ</a>
+            <a href="#contato" className="hover:text-white">Contato</a>
+            <a href="#segunda-via" className="hover:text-white">2ª via de boleto</a>
             <a
               href="https://diamank.vercel.app/"
               target="_blank"
@@ -149,14 +139,8 @@ export default function Page() {
             </div>
             <div className="mt-8 grid grid-cols-3 gap-6 max-w-lg text-sm">
               <Badge icon={<Timer className="h-4 w-4" />} label="Análise rápida" />
-              <Badge
-                icon={<TrendingUp className="h-4 w-4" />}
-                label="Taxas competitivas"
-              />
-              <Badge
-                icon={<FileText className="h-4 w-4" />}
-                label="Compliance e contratos"
-              />
+              <Badge icon={<TrendingUp className="h-4 w-4" />} label="Taxas competitivas" />
+              <Badge icon={<FileText className="h-4 w-4" />} label="Compliance e contratos" />
             </div>
           </div>
           <div className="relative">
@@ -219,22 +203,11 @@ export default function Page() {
         <Container>
           <ol className="grid md:grid-cols-3 gap-6">
             {[
-              {
-                n: 1,
-                t: "Envie suas notas",
-                d: "Compartilhe NF-e/XML/PDF e dados do sacado.",
-              },
-              {
-                n: 2,
-                t: "Receba proposta",
-                d: "Analisamos risco e apresentamos taxa e prazo.",
-              },
+              { n: 1, t: "Envie suas notas", d: "Compartilhe NF-e/XML/PDF e dados do sacado." },
+              { n: 2, t: "Receba proposta", d: "Analisamos risco e apresentamos taxa e prazo." },
               { n: 3, t: "Antecipe o valor", d: "Assine e receba os recursos." },
             ].map((s) => (
-              <li
-                key={s.n}
-                className="relative rounded-2xl border border-white/10 bg-white/5 p-6"
-              >
+              <li key={s.n} className="relative rounded-2xl border border-white/10 bg-white/5 p-6">
                 <div className="absolute -top-3 -left-3 h-10 w-10 rounded-xl bg-emerald-500 text-black grid place-content-center font-bold">
                   {s.n}
                 </div>
@@ -256,18 +229,6 @@ export default function Page() {
         </Container>
       </section>
 
-      {/* 2ª via de boletos */}
-      <section id="segunda-via" className="py-16 md:py-24 bg-slate-950/40 border-y border-white/10">
-        <SectionTitle
-          eyebrow="Boletos"
-          title="2ª via de boleto"
-          subtitle="Informe o CNPJ do sacado e o número da nota para localizar o boleto."
-        />
-        <Container>
-          <BoletoForm />
-        </Container>
-      </section>
-
       {/* FAQ */}
       <section
         id="faq"
@@ -276,22 +237,10 @@ export default function Page() {
         <SectionTitle eyebrow="Dúvidas" title="Perguntas frequentes" />
         <Container>
           <div className="grid md:grid-cols-2 gap-6">
-            <Faq
-              q="É empréstimo?"
-              a="Não. É fomento mercantil: você vende o recebível e recebe à vista, sem contrair dívida."
-            />
-            <Faq
-              q="Quais documentos preciso?"
-              a="NF-e/XML/PDF, dados do sacado e cadastro do cedente. Pode haver pedidos adicionais."
-            />
-            <Faq
-              q="Em quanto tempo recebo?"
-              a="Após aprovação e assinatura digital, normalmente em até 24h úteis."
-            />
-            <Faq
-              q="Atendem todo o Brasil?"
-              a="Sim, o processo é 100% digital. Atendimento consultivo por WhatsApp e e-mail."
-            />
+            <Faq q="É empréstimo?" a="Não. É fomento mercantil: você vende o recebível e recebe à vista, sem contrair dívida." />
+            <Faq q="Quais documentos preciso?" a="NF-e/XML/PDF, dados do sacado e cadastro do cedente. Pode haver pedidos adicionais." />
+            <Faq q="Em quanto tempo recebo?" a="Após aprovação e assinatura digital, normalmente em até 24h úteis." />
+            <Faq q="Atendem todo o Brasil?" a="Sim, o processo é 100% digital. Atendimento consultivo por WhatsApp e e-mail." />
           </div>
         </Container>
       </section>
@@ -313,51 +262,32 @@ export default function Page() {
               const cnpj = String(f.get("cnpj") || "");
               const email = String(f.get("email") || "");
               const texto = `Olá, sou ${nome}. Meu CNPJ é ${cnpj}. Telefone: ${tel}. E-mail: ${email}. Gostaria de antecipar meu recebimentos.`;
-              const url = `https://wa.me/${COMPANY.whatsapp.replace(
-                /\D/g,
-                ""
-              )}?text=${encodeURIComponent(texto)}`;
+              const url = `https://wa.me/${COMPANY.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(texto)}`;
               window.open(url, "_blank");
             }}
             className="mx-auto max-w-2xl grid md:grid-cols-2 gap-4"
           >
-            <input
-              name="nome"
-              required
-              placeholder="Nome"
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-            <input
-              name="cnpj"
-              required
-              placeholder="CNPJ"
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-            <input
-              name="telefone"
-              required
-              placeholder="Telefone"
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="E-mail"
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-            <textarea
-              name="mensagem"
-              placeholder="Mensagem (opcional)"
-              className="md:col-span-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500 min-h-[120px]"
-            />
-            <button
-              type="submit"
-              className="md:col-span-2 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-6 py-3 rounded-xl transition"
-            >
+            <input name="nome" required placeholder="Nome" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" />
+            <input name="cnpj" required placeholder="CNPJ" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" />
+            <input name="telefone" required placeholder="Telefone" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" />
+            <input type="email" name="email" required placeholder="E-mail" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" />
+            <textarea name="mensagem" placeholder="Mensagem (opcional)" className="md:col-span-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500 min-h-[120px]" />
+            <button type="submit" className="md:col-span-2 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-6 py-3 rounded-xl transition">
               Enviar pelo WhatsApp <MessageCircle className="h-4 w-4" />
             </button>
           </form>
+        </Container>
+      </section>
+
+      {/* 2ª via de boletos (última seção) */}
+      <section id="segunda-via" className="py-16 md:py-24 bg-slate-950/40 border-y border-white/10">
+        <SectionTitle
+          eyebrow="Boletos"
+          title="2ª via de boleto"
+          subtitle="Informe o CNPJ do sacado e o número da nota para localizar o boleto."
+        />
+        <Container>
+          <BoletoForm />
         </Container>
       </section>
 
@@ -367,13 +297,7 @@ export default function Page() {
           <div>
             <div className="flex items-center gap-3">
               <div className="h-9 w-9 rounded-lg overflow-hidden">
-                <Image
-                  src="/logo.png"
-                  alt="Diamank Finance"
-                  width={36}
-                  height={36}
-                  className="object-contain"
-                />
+                <Image src="/logo.png" alt="Diamank Finance" width={36} height={36} className="object-contain" />
               </div>
               <span className="font-semibold">{COMPANY.name}</span>
             </div>
@@ -389,48 +313,21 @@ export default function Page() {
           <div className="text-sm text-slate-300">
             <h4 className="font-semibold mb-3">Links</h4>
             <ul className="space-y-2">
+              <li><a className="hover:underline" href="#servicos">Serviços</a></li>
+              <li><a className="hover:underline" href="#como-funciona">Como funciona</a></li>
+              <li><a className="hover:underline" href="#faq">FAQ</a></li>
+              <li><a className="hover:underline" href="#contato">Contato</a></li>
+              <li><a className="hover:underline" href="#segunda-via">2ª via de boleto</a></li>
               <li>
-                <a className="hover:underline" href="#servicos">
-                  Serviços
-                </a>
-              </li>
-              <li>
-                <a className="hover:underline" href="#como-funciona">
-                  Como funciona
-                </a>
-              </li>
-              <li>
-                <a className="hover:underline" href="#segunda-via">
-                  2ª via de boleto
-                </a>
-              </li>
-              <li>
-                <a className="hover:underline" href="#faq">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a className="hover:underline" href="#contato">
-                  Contato
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:underline text-emerald-400 font-semibold"
-                  href="https://diamank.vercel.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Área do Cliente
+                <a className="hover:underline text-emerald-400 font-semibold" href="https://diamank.vercel.app/" target="_blank" rel="noreferrer">
+                  Área do Cedente
                 </a>
               </li>
             </ul>
           </div>
           <div className="text-sm text-slate-300">
             <h4 className="font-semibold mb-3">Horário de atendimento</h4>
-            <p className="text-slate-400">
-              De segunda a sexta-feira, das 07:00 às 17:00.
-            </p>
+            <p className="text-slate-400">De segunda a sexta-feira, das 07:00 às 17:00.</p>
           </div>
         </Container>
         <Container className="mt-6">
