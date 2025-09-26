@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Diamank Finance LTDA",
+  title: "Diamank Finance",
   description: "Antecipação de Recebíveis com Segurança e Agilidade",
 };
 
