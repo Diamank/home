@@ -262,7 +262,7 @@ export default function Page() {
         <Container>
           <div className="grid md:grid-cols-2 gap-6">
             <Faq
-              q="Fomento mercantil é empréstimo?"
+              q="É empréstimo?"
               a="Não. É fomento mercantil: você vende o recebível e recebe à vista, sem contrair dívida."
             />
             <Faq
